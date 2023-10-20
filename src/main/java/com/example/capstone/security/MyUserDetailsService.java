@@ -1,7 +1,6 @@
 package com.example.capstone.security;
 
-com.example.musicstreamingapi.model.User;
-import com.example.musicstreamingapi.service.UserService;
+import com.example.capstone.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
