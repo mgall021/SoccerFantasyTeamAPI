@@ -1,4 +1,4 @@
 package com.example.capstone.model;
 
-public class SoccerPlayers {
+public class SoccerPlayer {
 }
