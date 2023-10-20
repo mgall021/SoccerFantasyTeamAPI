@@ -1,19 +1,22 @@
 package com.example.capstone.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="soccerPlayers")
 public class SoccerPlayer {
-
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column
     private String name;
-
+    @Column
     private String Position;
-
+    @Column
     private Double Rating;
+
+
 
     public SoccerPlayer(){
 
