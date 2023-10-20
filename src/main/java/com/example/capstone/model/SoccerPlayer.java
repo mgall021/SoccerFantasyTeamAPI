@@ -1,6 +1,10 @@
 package com.example.capstone.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="soccerPlayers")
@@ -15,8 +19,14 @@ public class SoccerPlayer {
     private String Position;
     @Column
     private Double Rating;
-
-
+    @ManyToMany(
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },
+            mappedBy = "fantasyTeams")
+    @JsonIgnore
+    private Set<FantasyTeam> fantasyTeams = new HashSet<>();
 
     public SoccerPlayer(){
 
@@ -69,5 +79,13 @@ public class SoccerPlayer {
                 ", Position='" + Position + '\'' +
                 ", Rating=" + Rating +
                 '}';
+    }
+
+    public Set<FantasyTeam> getFantasyTeams() {
+        return fantasyTeams;
+    }
+
+    public void setFantasyTeams(Set<FantasyTeam> fantasyTeams) {
+        this.fantasyTeams = fantasyTeams;
     }
 }
