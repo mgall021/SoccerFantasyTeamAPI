@@ -11,9 +11,11 @@ import java.util.Set;
 @Entity
 @Table(name = "fantasyTeams")
 public class FantasyTeam {
-
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column
     private String name;
     @JsonIgnore
     @ManyToOne
@@ -32,6 +34,10 @@ public class FantasyTeam {
         this.name = name;
         this.user = user;
         this.soccerPlayers = soccerPlayers;
+    }
+
+    public FantasyTeam() {
+
     }
 
     public Long getId() {
