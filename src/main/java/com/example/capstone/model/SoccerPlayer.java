@@ -1,5 +1,10 @@
 package com.example.capstone.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="soccerPlayers")
 public class SoccerPlayer {
 
     private Long id;

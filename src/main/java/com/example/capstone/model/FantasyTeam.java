@@ -23,9 +23,9 @@ public class FantasyTeam {
     private User user;
 
     @ManyToMany
-   @JoinTable(name = "fantasyTeam_soccerPlayer",
+   @JoinTable(name = "fantasyTeam_soccerPlayers",
       joinColumns = { @JoinColumn (name = "fantasyTeam_id")},
-       inverseJoinColumns = {@JoinColumn(name="soccerPlayer_id")})
+       inverseJoinColumns = {@JoinColumn(name="soccerPlayers_id")})
     @LazyCollection(LazyCollectionOption.FALSE)
     private Set<SoccerPlayer> soccerPlayers = new HashSet<>();
 
