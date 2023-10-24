@@ -2,6 +2,7 @@ package com.example.capstone.controller;
 
 import com.example.capstone.model.User;
 import com.example.capstone.model.request.LoginRequest;
+import com.example.capstone.model.response.LoginResponse;
 import com.example.capstone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

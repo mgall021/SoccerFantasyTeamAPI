@@ -1,12 +1,15 @@
 package com.example.capstone.service;
 
 import com.example.capstone.model.User;
+import com.example.capstone.model.request.LoginRequest;
 import com.example.capstone.repository.UserRepository;
 import com.example.capstone.security.JWTUtils;
 import com.example.capstone.security.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -51,6 +54,19 @@ public class UserService {
         MyUserDetails userDetails = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         loggedinUser = userDetails.getUser();
     }
+
+    public Optional<String> loginUser(LoginRequest loginRequest){
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginRequest.getEmailAddress(), loginRequest.getPassword());
+        try{
+            Authentication authentication = authenticationManager.authenticate(authenticationToken);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            MyUserDetails myUserDetails =  (MyUserDetails) authentication.getPrincipal();
+            return Optional.of(jwtUtils.generateJwtToken(myUserDetails));
+        }catch (Exception e){
+            return Optional.empty();
+        }
+    }
+
 
 
 
