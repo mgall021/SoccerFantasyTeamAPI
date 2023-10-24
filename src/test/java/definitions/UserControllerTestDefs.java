@@ -3,13 +3,16 @@ package definitions;
 import com.example.capstone.SoccerFantasyTeamApiApplication;
 import com.example.capstone.model.FantasyTeam;
 import com.example.capstone.service.UserService;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.spring.CucumberContextConfiguration;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -57,7 +60,45 @@ public class UserControllerTestDefs {
         return response.jsonPath().getString("jwt");
     }
 
+
     @When("I create an account")
-    public void iCreateAnAccount() {
+    public void iCreateAnAccount() throws JSONException {
+        String endpoint = BASE_URL + port + "/auth/users/register/";
+        JSONObject requestBody = new JSONObject()
+                .put("firstName", "Suresh")
+                .put("lastName", "Sigera")
+                .put("emailAddress", "suresh@g.com")
+                .put("password", "suresh123");
+
+        response = RestAssured.given()
+                .contentType(ContentType.JSON)
+                .body(requestBody.toString())
+                .post(endpoint);
+
+        Assert.assertEquals(201, response.getStatusCode());
     }
+
+//    @Then("I get a user account")
+//    public void iGetAUserAccount() {
+//
+//    }
+//
+//    @When("I update the user account")
+//    public void iUpdateTheUserAccount() {
+//
+//    }
+//
+//    @Then("The user account is updated")
+//    public void theUserAccountIsUpdated() {
+//
+//    }
+//
+//    @When("I delete the user")
+//    public void iDeleteTheUser() {
+//
+//    }
+//
+//    @Then("The user gets deleted")
+//    public void theUserGetsDeleted() {
+//    }
 }
