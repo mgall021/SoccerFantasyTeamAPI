@@ -17,8 +17,9 @@ public class SoccerPlayer {
     private String name;
     @Column
     private String position;
+    @Column
     private String team;
-
+    @Column
     private String country;
 
     @Column
