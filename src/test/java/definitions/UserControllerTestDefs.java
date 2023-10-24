@@ -83,6 +83,7 @@ public class UserControllerTestDefs {
         System.out.println(response.getBody().prettyPrint());
         System.out.println(getJWTKey());
     }
+
 //
 //    @When("I update the user account")
 //    public void iUpdateTheUserAccount() {

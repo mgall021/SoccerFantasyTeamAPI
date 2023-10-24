@@ -3,9 +3,11 @@ package com.example.capstone.service;
 import com.example.capstone.model.User;
 import com.example.capstone.repository.UserRepository;
 import com.example.capstone.security.JWTUtils;
+import com.example.capstone.security.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +47,11 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
+    public static void getCurrentLoggedInUser(){
+        MyUserDetails userDetails = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        loggedinUser = userDetails.getUser();
+    }
+
 
 
 }
