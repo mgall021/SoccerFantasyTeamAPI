@@ -50,6 +50,19 @@ public class UserServiceTest {
         assertFalse(result.isPresent());
     }
 
+    @Test
+    public void testCreateUser(){
+        User userToCreate = new User(userId,"Whitney","pink@gmail.com","newpassword456");
+        // Configure the UserRepository to return the same user when save is called
+        when(userRepository.save(userToCreate)).thenReturn(userToCreate);
+        // Call the createUser method to create a new user
+        User createdUser = userService.createUser(userToCreate);
+        verify(userRepository,times(1)).save(userToCreate);
+        assertNotNull(createdUser.getId());
+        assertEquals("Whitney",createdUser.getName());
+        assertEquals("pink@gmail.com",createdUser.getEmailAddress());
+    }
+
 
 
 
