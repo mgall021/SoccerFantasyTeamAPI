@@ -3,6 +3,8 @@ package definitions;
 import com.example.capstone.SoccerFantasyTeamApiApplication;
 import com.example.capstone.model.SoccerPlayer;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -66,5 +68,25 @@ public class SoccerPlayerControllerTestDefs {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @When("The user requests to get a list of soccer players")
+    public void theUserRequestsToGetAListOfSoccerPlayers() {
+        try {
+            RestAssured.baseURI = BASE_URL;
+            RequestSpecification request = RestAssured.given();
+            request.header("Authorization", "Bearer " + getJWTKey(port));
+            request.header("Content-Type", "application/json");
+
+            log.info("Requesting the list of all soccer players");
+
+            response = request.get(BASE_URL + port + "/api/soccerplayers/");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Then("The system should respond with a list of soccer players")
+    public void theSystemShouldRespondWithAListOfSoccerPlayers() {
     }
 }
