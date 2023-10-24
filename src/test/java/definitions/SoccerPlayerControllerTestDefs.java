@@ -1,15 +1,19 @@
 package definitions;
 
 import com.example.capstone.SoccerFantasyTeamApiApplication;
+import com.example.capstone.model.SoccerPlayer;
 import io.cucumber.java.en.Given;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.junit.Assert;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.http.HttpStatus;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import static java.util.logging.Logger.getLogger;
@@ -45,5 +49,22 @@ public class SoccerPlayerControllerTestDefs {
         return response.jsonPath().getString("jwt");
     }
 
-
+    @Given("A list of soccer players are available in the database")
+    public void aListOfSoccerPlayersAreAvailableInTheDatabase() {
+        log.info("Calling aListOfSoccerPlayersAreAvailableInTheDatabase");
+        try {
+            RestAssured.baseURI = BASE_URL;
+            RequestSpecification request = RestAssured.given();
+            request.header("Authorization", "Bearer " + getJWTKey(port));
+            request.header("Content-Type", "application/json");
+            // Send a GET request to retrieve the list of soccer players
+            response = request.get(BASE_URL + port + "/api/soccerplayers/");
+            log.info(request.toString());
+            List<SoccerPlayer> soccerPlayers = response.jsonPath().get("data");
+            Assert.assertEquals(response.getStatusCode(), HttpStatus.OK.value()); //status is OK (200)
+            Assert.assertTrue(soccerPlayers.size() > 0); //list of soccer players is not empty
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
