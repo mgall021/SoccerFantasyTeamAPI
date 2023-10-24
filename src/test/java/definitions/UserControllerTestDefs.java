@@ -115,8 +115,9 @@ public class UserControllerTestDefs {
         response = request.delete(endpoint);
 
     }
-//
-//    @Then("The user gets deleted")
-//    public void theUserGetsDeleted() {
-//    }
+
+    @Then("The user gets deleted")
+    public void theUserGetsDeleted() {
+        Assert.assertEquals(200, response.getStatusCode());
+    }
 }
