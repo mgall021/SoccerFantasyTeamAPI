@@ -1,5 +1,6 @@
 package com.example.capstone.service;
 
+import com.example.capstone.exception.InformationNotFoundException;
 import com.example.capstone.model.User;
 import com.example.capstone.model.request.LoginRequest;
 import com.example.capstone.repository.UserRepository;
@@ -81,6 +82,16 @@ public class UserService {
             throw new IllegalArgumentException();
         }
     }
+    public User deleteUser(Long userId){
+        getCurrentLoggedInUser();
+        if(loggedinUser.getId() == userId){
+            userRepository.deleteById(userId);
+            return loggedinUser;
+        }else {
+            throw new InformationNotFoundException("can't delete profile");
+        }
+    }
+
 
 
 
