@@ -78,10 +78,11 @@ public class UserControllerTestDefs {
         Assert.assertEquals(201, response.getStatusCode());
     }
 
-//    @Then("I get a user account")
-//    public void iGetAUserAccount() {
-//
-//    }
+    @Then("I get a user account")
+    public void iGetAUserAccount() throws JSONException {
+        System.out.println(response.getBody().prettyPrint());
+        System.out.println(getJWTKey());
+    }
 //
 //    @When("I update the user account")
 //    public void iUpdateTheUserAccount() {
