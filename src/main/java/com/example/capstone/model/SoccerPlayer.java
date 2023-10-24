@@ -67,7 +67,7 @@ public class SoccerPlayer {
     }
 
     public void setPosition(String position) {
-        position = position;
+        this.position = position;
     }
 
     public Double getRating() {
@@ -75,8 +75,9 @@ public class SoccerPlayer {
     }
 
     public void setRating(Double rating) {
-        rating = rating;
+        this.rating = rating;
     }
+
 
     public String getTeam() {
         return team;
