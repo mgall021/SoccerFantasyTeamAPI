@@ -28,7 +28,7 @@ public class UserServiceTest {
 
     @Test
     public void testGetUserById(){
-        User user = new User(1L, "Marco", "marco@example.com", "password123",null);
+        User user = new User(1L, "Marco", "marco@example.com", "password123");
         // Call the UserRepository to return the user when findById is called
         when(userRepository.findById(userId)).thenReturn(Optional.of(user));
         // Call the getUserById method to retrieve a user by their ID
