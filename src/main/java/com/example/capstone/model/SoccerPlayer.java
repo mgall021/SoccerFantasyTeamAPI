@@ -24,7 +24,7 @@ public class SoccerPlayer {
                     CascadeType.PERSIST,
                     CascadeType.MERGE
             },
-            mappedBy = "fantasyTeams")
+            mappedBy = "soccerPlayers")
     @JsonIgnore
     private Set<FantasyTeam> fantasyTeams = new HashSet<>();
 

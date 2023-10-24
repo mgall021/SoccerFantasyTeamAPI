@@ -1,6 +1,7 @@
 package com.example.capstone.security;
 
 import com.example.capstone.model.User;
+import com.example.capstone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

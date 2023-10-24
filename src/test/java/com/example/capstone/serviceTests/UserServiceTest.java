@@ -20,6 +20,7 @@ public class UserServiceTest {
     private UserService userService;
     @Mock
     private UserRepository userRepository;
+    Long userId = 1L;
 
     @BeforeEach // Initializes Mockito annotations before each test method.
     public void setUp(){
