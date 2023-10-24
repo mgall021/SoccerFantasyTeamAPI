@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/auth/users")
@@ -28,5 +29,14 @@ public class UserController {
         response.put("message", "success");
         response.put("data", createdUser);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/login/")
+    public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest){
+        Optional<String> jwtToken = userService.loginUser(loginRequest);
+        if (jwtToken.isPresent()){
+            return ResponseEntity.ok(new LoginResponse(jwtToken.get()));
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new LoginResponse("Authentication failed"));
     }
 }
