@@ -2,6 +2,7 @@ package definitions;
 
 import com.example.capstone.SoccerFantasyTeamApiApplication;
 import com.example.capstone.model.FantasyTeam;
+import com.example.capstone.model.User;
 import com.example.capstone.service.UserService;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -96,16 +97,24 @@ public class UserControllerTestDefs {
         requestBody.put("name", "Updated Name");
         response = request.body(requestBody.toString()).put(BASE_URL + port + "/auth/users/" + userId + "/");
     }
-//
-//    @Then("The user account is updated")
-//    public void theUserAccountIsUpdated() {
-//
-//    }
-//
-//    @When("I delete the user")
-//    public void iDeleteTheUser() {
-//
-//    }
+
+    @Then("The user account is updated")
+    public void theUserAccountIsUpdated() {
+        Assert.assertEquals("Updated Name", response.jsonPath().getObject("data", User.class).getName());
+
+    }
+
+    @When("I delete the user")
+    public void iDeleteTheUser() throws JSONException{
+        int userId = response.jsonPath().getInt("data.id");
+        String endpoint = BASE_URL + port + "/auth/users/" + userId + "/";
+        System.out.println(endpoint);
+
+        request.header("Content-Type", "application/json");
+        request.header("Authorization", "Bearer " + getJWTKey());
+        response = request.delete(endpoint);
+
+    }
 //
 //    @Then("The user gets deleted")
 //    public void theUserGetsDeleted() {
