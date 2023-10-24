@@ -85,10 +85,17 @@ public class UserControllerTestDefs {
     }
 
 //
-//    @When("I update the user account")
-//    public void iUpdateTheUserAccount() {
-//
-//    }
+    @When("I update the user account")
+    public void iUpdateTheUserAccount() throws JSONException{
+        int userId = response.jsonPath().getInt("data.id");
+        RestAssured.baseURI = BASE_URL;
+        RequestSpecification request = RestAssured.given();
+        JSONObject requestBody = new JSONObject();
+        request.header("Content-Type", "application/json");
+        request.header("Authorization", "Bearer " + getJWTKey());
+        requestBody.put("name", "Updated Name");
+        response = request.body(requestBody.toString()).put(BASE_URL + port + "/auth/users/" + userId + "/");
+    }
 //
 //    @Then("The user account is updated")
 //    public void theUserAccountIsUpdated() {
