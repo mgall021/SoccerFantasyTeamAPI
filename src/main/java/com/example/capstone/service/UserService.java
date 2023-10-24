@@ -3,6 +3,7 @@ package com.example.capstone.service;
 import com.example.capstone.model.User;
 import com.example.capstone.repository.UserRepository;
 import com.example.capstone.security.JWTUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,6 +18,7 @@ public class UserService {
     private final JWTUtils jwtUtils;
     private final AuthenticationManager authenticationManager;
     private static User loggedinUser;
+
     private final PasswordEncoder passwordEncoder;
 
     /**
@@ -37,4 +39,12 @@ public class UserService {
     public Optional<User> getUserById(Long userId) {
         return userRepository.findById(userId);
     }
+
+    public User createUser(User user) {
+        // You can add validation logic here if needed
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepository.save(user);
+    }
+
+
 }
