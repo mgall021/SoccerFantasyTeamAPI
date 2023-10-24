@@ -17,4 +17,8 @@ public class SoccerPlayerService {
         this.soccerPlayerRepository = soccerPlayerRepository;
         this.soccerPlayersList = soccerPlayersList;
     }
+
+    public List<SoccerPlayer> getAllSoccerPlayers() {
+        return soccerPlayerRepository.findAll(); // Return the list of soccer players
+    }
 }
