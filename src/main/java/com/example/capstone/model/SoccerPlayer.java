@@ -16,9 +16,13 @@ public class SoccerPlayer {
     @Column
     private String name;
     @Column
-    private String Position;
+    private String position;
+    private String team;
+
+    private String country;
+
     @Column
-    private Double Rating;
+    private Double rating;
     @ManyToMany(
             cascade = {
                     CascadeType.PERSIST,
@@ -32,11 +36,13 @@ public class SoccerPlayer {
 
     }
 
-    public SoccerPlayer(Long id, String name, String position, Double rating) {
+    public SoccerPlayer(Long id, String name, String position, Double rating, String team, String country) {
         this.id = id;
         this.name = name;
-        Position = position;
-        Rating = rating;
+        this.position = position;
+        this.rating = rating;
+        this.country=country;
+        this.team=team;
     }
 
     public Long getId() {
@@ -56,19 +62,35 @@ public class SoccerPlayer {
     }
 
     public String getPosition() {
-        return Position;
+        return position;
     }
 
     public void setPosition(String position) {
-        Position = position;
+        position = position;
     }
 
     public Double getRating() {
-        return Rating;
+        return rating;
     }
 
     public void setRating(Double rating) {
-        Rating = rating;
+        rating = rating;
+    }
+
+    public String getTeam() {
+        return team;
+    }
+
+    public void setTeam(String team) {
+        this.team = team;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     @Override
@@ -76,8 +98,11 @@ public class SoccerPlayer {
         return "SoccerPlayer{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", Position='" + Position + '\'' +
-                ", Rating=" + Rating +
+                ", position='" + position + '\'' +
+                ", team='" + team + '\'' +
+                ", country='" + country + '\'' +
+                ", rating=" + rating +
+                ", fantasyTeams=" + fantasyTeams +
                 '}';
     }
 
