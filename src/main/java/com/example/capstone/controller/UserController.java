@@ -7,10 +7,7 @@ import com.example.capstone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Optional;
@@ -40,5 +37,20 @@ public class UserController {
             return ResponseEntity.ok(new LoginResponse(jwtToken.get()));
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new LoginResponse("Authentication failed"));
+    }
+
+    @PutMapping("/{userId}")
+    public ResponseEntity<?> updateUser(@PathVariable Long userId, @RequestBody User updatedUser) {
+        // Check if the user exists
+        Optional<User> existingUser = userService.getUserById(userId);
+        if (existingUser.isPresent()) {
+            User updated = userService.updateUser(userId, updatedUser);
+            response.put("message", "success");
+            response.put("data", updated);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } else {
+            // Handle the case where the user with the given ID doesn't exist
+            return ResponseEntity.notFound().build();
+        }
     }
 }
