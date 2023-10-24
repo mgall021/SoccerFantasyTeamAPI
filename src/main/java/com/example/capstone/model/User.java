@@ -64,6 +64,9 @@ public class User {
     public String getName() {
         return name;
     }
+    public Long getId() {
+        return id;
+    }
 
     @Override
     public String toString() {
