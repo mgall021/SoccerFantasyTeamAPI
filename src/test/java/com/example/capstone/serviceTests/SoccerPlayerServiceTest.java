@@ -53,18 +53,38 @@ public class SoccerPlayerServiceTest {
         // Mocking the service method
         when(soccerPlayerService.getSoccerPlayersByName(anyString())).thenReturn(List.of(new SoccerPlayer()));
 
-        // Calling the controller method
         ResponseEntity<?> response = soccerPlayerController.getSoccerPlayersByName("Name");
 
-        // Extracting the soccer players list from the response
+
         @SuppressWarnings("unchecked")
         HashMap<String, Object> responseBody = (HashMap<String, Object>) response.getBody();
         @SuppressWarnings("unchecked")
         List<SoccerPlayer> returnedPlayers = (List<SoccerPlayer>) responseBody.get("data");
 
-        // Asserting the size of the returned list
         assertEquals(1, returnedPlayers.size());
     }
+
+    @Test
+    void testGetSoccerPlayerById() {
+        // Mock the service method
+        SoccerPlayer mockPlayer = new SoccerPlayer();
+        when(soccerPlayerService.getSoccerPlayerById(anyLong())).thenReturn(mockPlayer);
+
+        // Call the controller method
+        ResponseEntity<?> response = soccerPlayerController.getSoccerPlayerById(1L);
+
+        // Extract the soccer player from the response
+        @SuppressWarnings("unchecked")
+        HashMap<String, Object> responseBody = (HashMap<String, Object>) response.getBody();
+        SoccerPlayer returnedPlayer = (SoccerPlayer) responseBody.get("data");
+
+        // Assert that the returned player matches the mock player
+        assertEquals(mockPlayer, returnedPlayer);
+    }
+
+
+
+
 
 
 

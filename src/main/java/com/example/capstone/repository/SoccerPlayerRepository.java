@@ -10,6 +10,8 @@ import java.util.List;
 public interface SoccerPlayerRepository extends JpaRepository<SoccerPlayer, Long> {
     List<SoccerPlayer> findByName(String name);
 
+    List<SoccerPlayer> findById(String name);
+
     List<SoccerPlayer> findByPosition(String position);
 
     List<SoccerPlayer> findByTeam(String team);
