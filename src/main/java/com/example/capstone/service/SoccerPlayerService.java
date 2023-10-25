@@ -21,4 +21,9 @@ public class SoccerPlayerService {
     public List<SoccerPlayer> getAllSoccerPlayers() {
         return soccerPlayerRepository.findAll(); // Return the list of soccer players
     }
+
+    public List<SoccerPlayer> getSoccerPlayersByName(String name) {
+        return soccerPlayerRepository.findByName(name);
+    }
+
 }

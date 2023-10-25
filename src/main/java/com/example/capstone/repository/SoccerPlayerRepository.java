@@ -8,6 +8,7 @@ import java.util.List;
 
 @Repository
 public interface SoccerPlayerRepository extends JpaRepository<SoccerPlayer, Long> {
+    List<SoccerPlayer> findByName(String name);
 
     List<SoccerPlayer> findByPosition(String position);
 
