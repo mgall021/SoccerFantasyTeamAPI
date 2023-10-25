@@ -33,4 +33,9 @@ public class FantasyTeamController {
     public ResponseEntity<FantasyTeam> removePlayerFromTeam(@PathVariable Long teamId, @PathVariable Long playerId) {
         return ResponseEntity.ok(fantasyTeamService.removePlayerFromTeam(teamId, playerId));
     }
+    @DeleteMapping("/{teamId}")
+    public ResponseEntity<Void> deleteFantasyTeam(@PathVariable Long teamId) {
+        fantasyTeamService.deleteFantasyTeam(teamId);
+        return ResponseEntity.noContent().build();
+    }
 }
