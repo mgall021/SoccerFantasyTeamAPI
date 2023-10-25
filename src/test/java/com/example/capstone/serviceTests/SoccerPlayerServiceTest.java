@@ -82,6 +82,26 @@ public class SoccerPlayerServiceTest {
         assertEquals(mockPlayer, returnedPlayer);
     }
 
+    @Test
+    void testGetSoccerPlayerByCountry() {
+        // Mock the service method
+        SoccerPlayer mockPlayer1 = new SoccerPlayer();
+        SoccerPlayer mockPlayer2 = new SoccerPlayer();
+        when(soccerPlayerService.getSoccerPlayerByCountry(anyString())).thenReturn(List.of(mockPlayer1, mockPlayer2));
+
+        // Call the controller method
+        ResponseEntity<?> response = soccerPlayerController.getSoccerPlayerByCountry("Brazil");
+
+        // Extract the soccer players list from the response
+        @SuppressWarnings("unchecked")
+        HashMap<String, Object> responseBody = (HashMap<String, Object>) response.getBody();
+        @SuppressWarnings("unchecked")
+        List<SoccerPlayer> returnedPlayers = (List<SoccerPlayer>) responseBody.get("data");
+
+        // Assert that the size of the returned list is 2
+        assertEquals(2, returnedPlayers.size());
+    }
+
 
 
 
