@@ -34,5 +34,10 @@ public class SoccerPlayerService {
         return soccerPlayerRepository.findByCountry(country);
     }
 
+    public List<SoccerPlayer> getSoccerPlayerByPosition(String position) {
+        return soccerPlayerRepository.findByPosition(position);
+    }
+
+
 
 }
