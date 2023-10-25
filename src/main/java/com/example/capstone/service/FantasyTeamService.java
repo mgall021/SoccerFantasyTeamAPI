@@ -1,6 +1,7 @@
 package com.example.capstone.service;
 
 import com.example.capstone.model.FantasyTeam;
+import com.example.capstone.model.SoccerPlayer;
 import com.example.capstone.repository.FantasyTeamRepository;
 import com.example.capstone.repository.SoccerPlayerRepository;
 import com.example.capstone.repository.UserRepository;
@@ -24,6 +25,21 @@ public class FantasyTeamService {
         if (fantasyTeam.getSoccerPlayers().size() > 11) {
             throw new IllegalArgumentException("A fantasy team can have at most 11 players.");
         }
+        return fantasyTeamRepository.save(fantasyTeam);
+    }
+
+    public FantasyTeam addPlayerToTeam(Long teamId, Long playerId) {
+        FantasyTeam fantasyTeam = fantasyTeamRepository.findById(teamId)
+                .orElseThrow(() -> new IllegalArgumentException("Fantasy team not found."));
+
+        SoccerPlayer player = soccerPlayerRepository.findById(playerId)
+                .orElseThrow(() -> new IllegalArgumentException("Player not found."));
+
+        if (fantasyTeam.getSoccerPlayers().size() >= 11) {
+            throw new IllegalArgumentException("A fantasy team can have at most 11 players.");
+        }
+
+        fantasyTeam.getSoccerPlayers().add(player);
         return fantasyTeamRepository.save(fantasyTeam);
     }
 
