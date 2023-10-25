@@ -58,5 +58,12 @@ public class FantasyTeamService {
         return fantasyTeamRepository.save(fantasyTeam);
     }
 
+    public void deleteFantasyTeam(Long teamId) {
+        if (!fantasyTeamRepository.existsById(teamId)) {
+            throw new RuntimeException("Fantasy Team not found with ID: " + teamId);
+        }
+        fantasyTeamRepository.deleteById(teamId);
+    }
+
 
 }
