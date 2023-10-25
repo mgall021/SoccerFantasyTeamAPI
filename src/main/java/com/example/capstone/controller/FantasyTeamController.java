@@ -18,4 +18,9 @@ public class FantasyTeamController {
     public ResponseEntity<FantasyTeam> createFantasyTeam(@RequestBody FantasyTeam fantasyTeam) {
         return ResponseEntity.ok(fantasyTeamService.createFantasyTeam(fantasyTeam));
     }
+
+    @PutMapping("/{teamId}/addPlayer/{playerId}")
+    public ResponseEntity<FantasyTeam> addPlayerToTeam(@PathVariable Long teamId, @PathVariable Long playerId) {
+        return ResponseEntity.ok(fantasyTeamService.addPlayerToTeam(teamId, playerId));
+    }
 }
