@@ -66,6 +66,21 @@ public class SoccerPlayerController {
         }
     }
 
+    @GetMapping("/country/{country}")
+    public ResponseEntity<?> getSoccerPlayerByCountry(@PathVariable String country) {
+        List<SoccerPlayer> soccerPlayers = soccerPlayerService.getSoccerPlayerByCountry(country);
+        HashMap<String, Object> message = new HashMap<>();
+        if (soccerPlayers.isEmpty()) {
+            message.put("message", "Cannot find soccer players from the specified country.");
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        } else {
+            message.put("message", "Success");
+            message.put("data", soccerPlayers);
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        }
+    }
+
+
 
 
 

@@ -101,6 +101,24 @@ public class SoccerPlayerServiceTest {
         assertEquals(2, returnedPlayers.size());
     }
 
+    @Test
+    void testGetSoccerPlayerByPosition() {
+
+        SoccerPlayer mockPlayer1 = new SoccerPlayer();
+        SoccerPlayer mockPlayer2 = new SoccerPlayer();
+        when(soccerPlayerService.getSoccerPlayerByPosition(anyString())).thenReturn(List.of(mockPlayer1, mockPlayer2));
+        ResponseEntity<?> response = soccerPlayerController.getSoccerPlayerByPosition("Midfielder");
+
+        @SuppressWarnings("unchecked")
+        HashMap<String, Object> responseBody = (HashMap<String, Object>) response.getBody();
+        @SuppressWarnings("unchecked")
+        List<SoccerPlayer> returnedPlayers = (List<SoccerPlayer>) responseBody.get("data");
+
+        assertEquals(2, returnedPlayers.size());
+    }
+
+
+
 
 
 
