@@ -26,4 +26,8 @@ public class SoccerPlayerService {
         return soccerPlayerRepository.findByName(name);
     }
 
+    public SoccerPlayer getSoccerPlayerById(Long id) {
+        return soccerPlayerRepository.findById(id).orElse(null);
+    }
+
 }
