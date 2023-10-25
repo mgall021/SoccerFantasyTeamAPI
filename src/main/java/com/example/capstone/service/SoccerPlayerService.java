@@ -38,6 +38,11 @@ public class SoccerPlayerService {
         return soccerPlayerRepository.findByPosition(position);
     }
 
+    public List<SoccerPlayer> getSoccerPlayerByTeam(String team) {
+        return soccerPlayerRepository.findByTeam(team);
+    }
+
+
 
 
 }
