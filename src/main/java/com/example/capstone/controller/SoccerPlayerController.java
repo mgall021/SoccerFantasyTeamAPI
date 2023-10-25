@@ -52,5 +52,22 @@ public class SoccerPlayerController {
             return new ResponseEntity<>(message, HttpStatus.OK);
         }
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getSoccerPlayerById(@PathVariable Long id) {
+        SoccerPlayer soccerPlayer = soccerPlayerService.getSoccerPlayerById(id);
+        HashMap<String, Object> message = new HashMap<>();
+        if (soccerPlayer == null) {
+            message.put("message", "Cannot find the soccer player with the given ID.");
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        } else {
+            message.put("message", "Success");
+            message.put("data", soccerPlayer);
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        }
+    }
+
+
+
+
 
 }
