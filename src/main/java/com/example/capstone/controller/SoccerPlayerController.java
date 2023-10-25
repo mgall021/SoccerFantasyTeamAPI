@@ -93,6 +93,21 @@ public class SoccerPlayerController {
         }
     }
 
+    @GetMapping("/team/{team}")
+    public ResponseEntity<?> getSoccerPlayerByTeam(@PathVariable String team) {
+        List<SoccerPlayer> soccerPlayers = soccerPlayerService.getSoccerPlayerByTeam(team);
+        HashMap<String, Object> message = new HashMap<>();
+        if (soccerPlayers.isEmpty()) {
+            message.put("message", "Cannot find soccer players from the specified team.");
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        } else {
+            message.put("message", "Success");
+            message.put("data", soccerPlayers);
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        }
+    }
+
+
 
 
 

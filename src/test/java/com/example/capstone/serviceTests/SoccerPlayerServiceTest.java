@@ -130,7 +130,6 @@ public class SoccerPlayerServiceTest {
         @SuppressWarnings("unchecked")
         List<SoccerPlayer> returnedPlayers = (List<SoccerPlayer>) responseBody.get("data");
 
-        // Assert that the size of the returned list is 2
         assertEquals(2, returnedPlayers.size());
     }
 
