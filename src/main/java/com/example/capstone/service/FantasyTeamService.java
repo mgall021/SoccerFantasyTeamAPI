@@ -46,7 +46,6 @@ public class FantasyTeamService {
 
         fantasyTeam.getSoccerPlayers().add(player);
         return fantasyTeamRepository.save(fantasyTeam);
-        teamId.toString()
     }
     public FantasyTeam removePlayerFromTeam(Long teamId, Long playerId) {
         FantasyTeam fantasyTeam = fantasyTeamRepository.findById(teamId)

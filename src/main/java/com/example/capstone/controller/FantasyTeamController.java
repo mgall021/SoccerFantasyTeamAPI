@@ -28,4 +28,9 @@ public class FantasyTeamController {
     public ResponseEntity<FantasyTeam> addPlayerToTeam(@PathVariable Long teamId, @PathVariable Long playerId) {
         return ResponseEntity.ok(fantasyTeamService.addPlayerToTeam(teamId, playerId));
     }
+
+    @PutMapping("/{teamId}/removePlayer/{playerId}")
+    public ResponseEntity<FantasyTeam> removePlayerFromTeam(@PathVariable Long teamId, @PathVariable Long playerId) {
+        return ResponseEntity.ok(fantasyTeamService.removePlayerFromTeam(teamId, playerId));
+    }
 }
