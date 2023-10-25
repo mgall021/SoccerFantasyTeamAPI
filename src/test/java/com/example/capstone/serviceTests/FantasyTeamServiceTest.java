@@ -83,9 +83,15 @@ public class FantasyTeamServiceTest {
         verify(fantasyTeamRepository).deleteById(teamId);
     }
 
+    @Test
+    public void testDeleteFantasyTeamNotFound() {
+        Long teamId = 1L;
+        when(fantasyTeamRepository.existsById(teamId)).thenReturn(false);
 
+        assertThrows(RuntimeException.class, () -> {
+            fantasyTeamService.deleteFantasyTeam(teamId);
+        });
 
-
-
+    }
 
 }
