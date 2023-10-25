@@ -13,7 +13,9 @@ public class FantasyTeamService {
 
     private final SoccerPlayerRepository soccerPlayerRepository;
 
-
-
-
+    public FantasyTeamService(FantasyTeamRepository fantasyTeamRepository, UserRepository userRepository, SoccerPlayerRepository soccerPlayerRepository) {
+        this.fantasyTeamRepository = fantasyTeamRepository;
+        this.userRepository = userRepository;
+        this.soccerPlayerRepository = soccerPlayerRepository;
+    }
 }
