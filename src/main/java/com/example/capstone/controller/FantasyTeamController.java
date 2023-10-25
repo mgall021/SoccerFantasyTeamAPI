@@ -14,6 +14,11 @@ public class FantasyTeamController {
     @Autowired
     private FantasyTeamService fantasyTeamService;
 
+    @GetMapping("/{userId}")
+    public ResponseEntity<List<FantasyTeam>> getUserFantasyTeams(@PathVariable Long userId) {
+        return ResponseEntity.ok(fantasyTeamService.getUserFantasyTeams(userId));
+    }
+
     @PostMapping
     public ResponseEntity<FantasyTeam> createFantasyTeam(@RequestBody FantasyTeam fantasyTeam) {
         return ResponseEntity.ok(fantasyTeamService.createFantasyTeam(fantasyTeam));

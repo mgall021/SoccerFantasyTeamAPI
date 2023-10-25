@@ -8,6 +8,7 @@ import com.example.capstone.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 @Service
@@ -20,6 +21,10 @@ public class FantasyTeamService {
 
     private final Logger logger = Logger.getLogger(FantasyTeamService.class.getName());
 
+
+    public List<FantasyTeam> getUserFantasyTeams(Long userId) {
+        return fantasyTeamRepository.findByUser_Id(userId);
+    }
 
     public FantasyTeam createFantasyTeam(FantasyTeam fantasyTeam) {
         if (fantasyTeam.getSoccerPlayers().size() > 11) {
