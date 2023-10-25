@@ -46,6 +46,18 @@ public class FantasyTeamService {
 
         fantasyTeam.getSoccerPlayers().add(player);
         return fantasyTeamRepository.save(fantasyTeam);
+        teamId.toString()
     }
+    public FantasyTeam removePlayerFromTeam(Long teamId, Long playerId) {
+        FantasyTeam fantasyTeam = fantasyTeamRepository.findById(teamId)
+                .orElseThrow(() -> new IllegalArgumentException("Fantasy team not found."));
+
+        SoccerPlayer player = soccerPlayerRepository.findById(playerId)
+                .orElseThrow(() -> new IllegalArgumentException("Player not found."));
+
+        fantasyTeam.getSoccerPlayers().remove(player);
+        return fantasyTeamRepository.save(fantasyTeam);
+    }
+
 
 }
