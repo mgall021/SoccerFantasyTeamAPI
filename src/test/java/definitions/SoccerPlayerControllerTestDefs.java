@@ -19,6 +19,8 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import static java.util.logging.Logger.getLogger;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SoccerFantasyTeamApiApplication.class)
 public class SoccerPlayerControllerTestDefs {
@@ -88,5 +90,9 @@ public class SoccerPlayerControllerTestDefs {
 
     @Then("The system should respond with a list of soccer players")
     public void theSystemShouldRespondWithAListOfSoccerPlayers() {
+        String responseList = null;
+        assertNotNull(responseList);
+        assertFalse(responseList.isEmpty());
+
     }
 }
