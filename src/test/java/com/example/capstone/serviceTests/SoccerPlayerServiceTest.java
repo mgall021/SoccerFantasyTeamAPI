@@ -5,8 +5,10 @@ import com.example.capstone.model.SoccerPlayer;
 import com.example.capstone.service.SoccerPlayerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +19,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
+@RunWith(MockitoJUnitRunner.class)
 public class SoccerPlayerServiceTest {
     @Mock
     private SoccerPlayerService soccerPlayerService;
