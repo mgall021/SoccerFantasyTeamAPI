@@ -1,6 +1,7 @@
 package com.example.capstone.serviceTests;
 
 
+import com.example.capstone.exception.InformationExistException;
 import com.example.capstone.model.FantasyTeam;
 import com.example.capstone.model.SoccerPlayer;
 import com.example.capstone.repository.FantasyTeamRepository;
@@ -71,6 +72,17 @@ public class FantasyTeamServiceTest {
         FantasyTeam result = fantasyTeamService.removePlayerFromTeam(1L, 1L);
         assertFalse(result.getSoccerPlayers().contains(player));
     }
+
+    @Test
+    public void testDeleteFantasyTeam() {
+        Long teamId = 1L;
+        when(fantasyTeamRepository.existsById(teamId)).thenReturn(true);
+
+        fantasyTeamService.deleteFantasyTeam(teamId);
+
+        verify(fantasyTeamRepository).deleteById(teamId);
+    }
+
 
 
 
