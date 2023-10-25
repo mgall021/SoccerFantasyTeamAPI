@@ -56,6 +56,23 @@ public class FantasyTeamServiceTest {
     }
 
 
+    @Test
+    public void testRemovePlayerFromTeam() {
+        FantasyTeam team = new FantasyTeam();
+        SoccerPlayer player = new SoccerPlayer();
+        Set<SoccerPlayer> players = new HashSet<>();
+        players.add(player);
+        team.setSoccerPlayers(players);
+
+        when(fantasyTeamRepository.findById(1L)).thenReturn(Optional.of(team));
+        when(soccerPlayerRepository.findById(1L)).thenReturn(Optional.of(player));
+        when(fantasyTeamRepository.save(any(FantasyTeam.class))).thenReturn(team);
+
+        FantasyTeam result = fantasyTeamService.removePlayerFromTeam(1L, 1L);
+        assertFalse(result.getSoccerPlayers().contains(player));
+    }
+
+
 
 
 
