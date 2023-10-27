@@ -82,23 +82,35 @@ As a user, I want to be able to login securely.
 - jjwt-api: 0.11.5
 - jjwt-impl: 0.11.5 (scope: runtime)
 - jjwt-jackson: 0.11.5 (scope: runtime)
-
+</details>
 
 ## API Endpoints
 ***
 <details>
   <summary> <b>User Endpoints</b></summary>
+
 | HTTP Methods | Endpoint URL                         | Functionality           | Access    | 
 |--------------|--------------------------------------|-------------------------|-----------|
 | POST         | `/auth/users/register/`              | Register a new user     | public    |
 | POST         | `/auth/users/login/`                 | Login a registered user | public    |
-| PUT          | `/auth/users/{userId}`               | Update a User           | private   |
-| GET          | `/auth/users/{userId}`               | Get a User by Id        | private   |
-| DELETE       | `/auth/users/{userId}/`              | Delete a User           | private   |
+| PUT          | `/auth/users/{userId}`                       | Update a User           | private   |
+| GET          | `/auth/users/{userId}`                       | Get a User by Id        | private   |
+| DELETE       | `/auth/users/{userId}/`               | Delete a User           | private   |
 
 </details>
+<details>
+  <summary> <b>SocerPlayer Endpoints</b></summary>
 
+| HTTP Methods | Endpoint URL                         | Functionality      | Access  | 
+|--------------|--------------------------------------|--------------------|---------|
+| GET          | `/api/soccerplayers`              | Get all players     | private |
+| GET          | `/api/soccerplayers/name/{name}`                 | Get a player by name   | private |
+| GET          | `/api/soccerplayers/{id}`                       | Get players by Id | private |
+| GET          | `/api/soccerplayers/country/{country}`                       | Get players by country name | private |
+| GET          | `/api/soccerplayers/position/{position}`                       | Get players by their position | private |
+| GET          | `/api/soccerplayers/team/{team}`                       | Get players by their team | private |
 
+</details>
 
 
 
