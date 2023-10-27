@@ -111,6 +111,18 @@ As a user, I want to be able to login securely.
 | GET          | `/api/soccerplayers/team/{team}`                       | Get players by their team | private |
 
 </details>
+<details>
+  <summary> <b>Fantasy Team Endpoints</b></summary>
+
+| HTTP Methods | Endpoint URL                         | Functionality           | Access    | 
+|--------------|--------------------------------------|-------------------------|-----------|
+| GET         | `/api/fantasyTeam/{userId`              | Return a list for given user   | public    |
+| POST         | `/api/fantasyTeam`                 | create a new fabtasy Team object| public    |
+| PUT          | `/api/fantasyTeam/{teamid}/addPlayer/{playerid}`                       | adds a player to team          | private   |
+| PUT          | `/api/fantasyTeam/{teamid}/addPlayer/{playerid}`                       | removes a player from the team       | private   |
+| DELETE       | `/api/fantasyTeam/{teamId}`               | Delete a fantasy Team           | private   |
+
+</details>
 
 
 
