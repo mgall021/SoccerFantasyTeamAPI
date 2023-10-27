@@ -84,3 +84,32 @@ As a user, I want to be able to login securely.
 - jjwt-jackson: 0.11.5 (scope: runtime)
 
 
+## API Endpoints
+***
+<details>
+  <summary> <b>User Endpoints</b></summary>
+| HTTP Methods | Endpoint URL                         | Functionality           | Access    | 
+|--------------|--------------------------------------|-------------------------|-----------|
+| POST         | `/auth/users/register/`              | Register a new user     | public    |
+| POST         | `/auth/users/login/`                 | Login a registered user | public    |
+| PUT          | `/auth/users/{userId}`               | Update a User           | private   |
+| GET          | `/auth/users/{userId}`               | Get a User by Id        | private   |
+| DELETE       | `/auth/users/{userId}/`              | Delete a User           | private   |
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
