@@ -125,6 +125,24 @@ As a user, I want to be able to login securely.
 </details>
 
 
+### Challenges
+
+One significant challenge encountered during the development of this Spring API was the implementation of testing procedures. Initially, I attempted to encompass all testing aspects within the Cucumber framework, aiming for comprehensive coverage. However, as the project complexity grew, it became apparent that some testing scenarios required a more fine-grained approach. This led to the incorporation of Mockito, which provided the flexibility needed to simulate specific behaviors and interactions, ultimately enhancing the accuracy and effectiveness of the testing process. Adapting to this dual testing approach proved instrumental in achieving a robust and reliable API, ensuring that both high-level features and intricate components were thoroughly validated.
+
+
+### Key Achievements
+
+The achievement here has to be that all my tests pass. 
+
+### Acknowledgments
+
+I'd like to express my heartfelt gratitude to everyone who contributed to the success of this project. Special thanks to my company, Interapt, for providing the support and resources necessary for this endeavor.
+
+I also want to extend my appreciation to my dedicated instructors, Leo, Dhrubo, and Suresh, whose guidance and expertise were instrumental throughout this journey. Additionally, a big shoutout to Kerry for her unwavering support and presence week after week.
+
+Your collective efforts and encouragement have been invaluable, and I couldn't have accomplished this without you all. Thank you for being a part of this project's success.
+
+
 
 
 
