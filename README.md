@@ -24,8 +24,7 @@ As a user, I want to be able to login securely.
 
 ## Entity Relationship Diagram (ERD)
 ***
-![ERD image]()
-
+[Soccer Fantasy Team Manager ERD.pdf](https://github.com/mgall021/SoccerFantasyTeamAPI/files/13188852/Soccer.Fantasy.Team.Manager.ERD.pdf)
 
 
 # Dependencies
