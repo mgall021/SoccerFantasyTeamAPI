@@ -1,5 +1,8 @@
 # Soccer Fantasy Team API:Backend with Spring Boot
 
+![Alt text](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzk4GNDdJGwOyAFqEQlih0aUuffhyeJvC2xQ&usqp=CAU)
+
+
 ## Description
 
 This Soccer Manager API project is designed for soccer fans who want to create and manage their fantasy soccer teams effortlessly. It offers user profiles for personalized experiences and categorizes soccer players by attributes like name, country, and position, making player discovery a breeze. 
@@ -129,6 +132,8 @@ As a user, I want to be able to login securely.
 
 One significant challenge encountered during the development of this Spring API was the implementation of testing procedures. Initially, I attempted to encompass all testing aspects within the Cucumber framework, aiming for comprehensive coverage. However, as the project complexity grew, it became apparent that some testing scenarios required a more fine-grained approach. This led to the incorporation of Mockito, which provided the flexibility needed to simulate specific behaviors and interactions, ultimately enhancing the accuracy and effectiveness of the testing process. Adapting to this dual testing approach proved instrumental in achieving a robust and reliable API, ensuring that both high-level features and intricate components were thoroughly validated.
 
+![Alt text](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHhwFTE3h05_1d0nsaLfi9P1xXfiWmZa9AWA&usqp=CAU)
+
 
 ### Key Achievements
 
@@ -142,6 +147,8 @@ I also want to extend my appreciation to my dedicated instructors, Leo, Dhrubo, 
 
 Your collective efforts and encouragement have been invaluable, and I couldn't have accomplished this without you all. Thank you for being a part of this project's success.
 
+
+![Alt text](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ834rX7BDZvE1jOqTF3Fei5pY2pL02Y4BzVg&usqp=CAU)
 
 
 
